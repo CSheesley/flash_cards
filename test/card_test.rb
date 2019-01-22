@@ -6,6 +6,7 @@ class CardTest < Minitest::Test
 
   def test_it_exists
     card = Card.new("What is the capital of Alaska?", "Juneau", :Geography)
+
     assert_instance_of Card, card
   end
 
@@ -23,6 +24,7 @@ class CardTest < Minitest::Test
 
   def test_it_has_a_category
     card = Card.new("What is the capital of Alaska?", "Juneau", :Geography)
+
     assert_equal :Geography, card.category
   end
 end
