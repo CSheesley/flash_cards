@@ -36,12 +36,20 @@ class DeckTest < Minitest::Test
     cards = [@card_1, @card_2, @card_3]
     deck = Deck.new(cards)
 
-    binding.pry
+    assert_equal [@card_1], deck.cards_in_category(:Geography)
+  end
 
-    assert_equal
+  def test_that_cards_can_be_seperated_by_a_different_category
+    cards = [@card_1, @card_2, @card_3]
+    deck = Deck.new(cards)
+
+    assert_equal [@card_2, @card_3], deck.cards_in_category(:STEM)
   end
 
   def test_that_returns_an_empty_array_if_category_is_not_present
+    cards = [@card_1, @card_2, @card_3]
+    deck = Deck.new(cards)
 
+    assert_equal [], deck.cards_in_category(:History)
   end
 end
