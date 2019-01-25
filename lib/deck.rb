@@ -9,11 +9,11 @@ class Deck
     @cards.count
   end
 
-  def cards_in_category(category)
+  def cards_in_category(category_argument)
     category_cards = []
-    @cards.each do |card|
-      if card.category == category
-        category_cards << card
+    @cards.each do |flash_card|
+      if flash_card.category == category_argument
+        category_cards << flash_card
       end
     end
     category_cards # 'got eached' initial error was due to scoping issue
