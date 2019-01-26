@@ -1,6 +1,7 @@
 require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/card'
+require './lib/turn'
 require './lib/deck'
 require './lib/round'
 
@@ -39,13 +40,45 @@ class RoundTest < Minitest::Test
     assert_equal @deck.cards[0], round.current_card
   end
 
+  def test_that_turns_array_increased_when_take_turn_called
+    round = Round.new(@deck)
+    round.take_turn("Juneau")
+
+    assert_equal 1, round.turns.length
+  end
+
+  def test_that_a_turn_object_is_created
+    round = Round.new(@deck)
+
+    assert_instance_of Turn, round.take_turn("Juneau")
+  end
+
+  def test_to_see_if_answer_was_correct
+    round = Round.new(@deck)
+
+    assert_equal "Juneau", round.take_turn("Juneau").guess
+  end
+
   def test_that_next_card_in_deck_comes_up_after_take_turn
     skip
     round = Round.new(@deck)
     round.take_turn("Juneau") #Error msg - NameError: uninitialized constant Round::Turn
 
     assert_equal @cards[1], @current_card
+  end
 
+  def test_that_the_guess_was_correct #is this test correct or just hard coded to pass?
+    round = Round.new(@deck)
+    turn = Turn.new("Juneau", @deck.cards[0])
+
+    assert turn.correct?
+  end
+
+  def test_that_the_guess_was_incorrect
+    round = Round.new(@deck)
+    turn = Turn.new("Nome", @deck.cards[0])
+
+    refute turn.correct?
   end
 
   def test_that_a_turn_was_taken
