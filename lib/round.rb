@@ -1,7 +1,7 @@
 require 'pry'
 
 class Round
-  attr_reader :deck, :turns, :current_card, :number_correct, :number_incorrect
+  attr_reader :deck, :turns, :current_card, :number_correct, :number_incorrect, :correct_cards, :incorrect_cards
 
   def initialize(deck)
     @deck = deck
@@ -28,8 +28,12 @@ class Round
     return current_turn
   end
 
+  def number_correct_by_category(category_arg)
 
-
-
+    correct_by_category = @correct_cards.find_all do |turn|
+      turn.card.category == category_arg
+    end
+    correct_by_category.count
+  end
 
 end
