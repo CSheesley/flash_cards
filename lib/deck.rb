@@ -18,4 +18,5 @@ class Deck
     end
     category_cards # 'got eached' initial error was due to scoping issue
   end
+
 end
