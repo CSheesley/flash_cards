@@ -16,7 +16,7 @@ class TurnTest < Minitest::Test
     assert_instance_of Turn, turn
   end
 
-  def test_that_it_makes_a_guess
+  def test_that_it_has_a_guess
     turn = Turn.new("Juneau", @card)
 
     assert_equal "Juneau", turn.guess
@@ -35,7 +35,7 @@ class TurnTest < Minitest::Test
   end
 
   def test_that_it_receives_correct_feedback
-  turn = Turn.new("Juneau", @card)
+    turn = Turn.new("Juneau", @card)
 
     assert_equal "Correct!", turn.feedback
   end
