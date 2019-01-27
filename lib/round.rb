@@ -1,14 +1,13 @@
 require 'pry'
 
 class Round
-  attr_reader :deck, :turns, :current_card, :number_correct, :number_incorrect, :correct_cards
+  attr_reader :deck, :turns, :current_card, :number_correct, :correct_cards
 
   def initialize(deck)
     @deck = deck
-    @turns = []
     @current_card = @deck.cards[0]
+    @turns = []
     @number_correct = 0
-    @number_incorrect = 0
     @correct_cards = []
   end
 
@@ -33,11 +32,11 @@ class Round
   end
 
   def percent_correct
-    percentage = @number_correct / @turns.count.to_f
-    percentage * 100
+    percentage_decimal = @number_correct / @turns.count.to_f
+    percentage_decimal * 100
   end
 
-  def percent_correct_by_category(category_arg)
+  def percent_correct_by_category(category_arg) #is naming confusing in this method?
     all_by_category = @turns.find_all do |turn|
       turn.card.category == category_arg
     end
