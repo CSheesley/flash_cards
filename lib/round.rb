@@ -15,6 +15,8 @@ class Round
     current_turn = Turn.new(guess, @current_card)
     @turns << current_turn
 
+    p current_turn.feedback
+
     if current_turn.correct?
       @number_correct += 1
       @correct_cards << current_turn
@@ -41,5 +43,11 @@ class Round
       turn.card.category == category_arg
     end
     (number_correct_by_category(category_arg) / all_by_category.count.to_f) * 100
+  end
+
+  def start #need to write a test?
+    puts "-" * 45
+    puts "Welcome! You are playing with #{deck.cards.count} cards."
+    puts "-" * 45
   end
 end
