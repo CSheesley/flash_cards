@@ -8,11 +8,11 @@ require './lib/round'
 class RoundTest < Minitest::Test
 
   def setup
-    card_1 = Card.new("What is the capital of Alaska?", "Juneau", :Geography)
-    card_2 = Card.new("The Viking spacecraft sent back to Earth photographs and reports about the surface of which planet?", "Mars", :STEM)
-    card_3 = Card.new("Describe in words the exact direction that is 697.5° clockwise from due north?", "North north west", :STEM)
+    @card_1 = Card.new("What is the capital of Alaska?", "Juneau", :Geography)
+    @card_2 = Card.new("The Viking spacecraft sent back to Earth photographs and reports about the surface of which planet?", "Mars", :STEM)
+    @card_3 = Card.new("Describe in words the exact direction that is 697.5° clockwise from due north?", "North north west", :STEM)
 
-    @cards = [card_1, card_2, card_3]
+    @cards = [@card_1, @card_2, @card_3]
     @deck = Deck.new(@cards)
   end
 
@@ -60,11 +60,10 @@ class RoundTest < Minitest::Test
   end
 
   def test_that_next_card_in_deck_comes_up_after_take_turn
-    skip
     round = Round.new(@deck)
     round.take_turn("Juneau") #Error msg - NameError: uninitialized constant Round::Turn
 
-    assert_equal @cards[1], @current_card
+    assert_equal @card_2, @cards[1]
   end
 
   def test_that_the_guess_was_correct #is this test correct or just hard coded to pass?
@@ -82,28 +81,32 @@ class RoundTest < Minitest::Test
   end
 
   def test_that_shows_correct_answers_by_category
-    skip
     round = Round.new(@deck)
     turn = Turn.new("Juneau", @deck.cards[0])
     round.take_turn("Juneau")
-require 'pry'; binding.pry
+
     assert_equal 1, round.number_correct_by_category(:Geography)
   end
 
+  def test_correct_percentage_by_category
+    round = Round.new(@deck)
+    turn = Turn.new("Juneau", @deck.cards[0])
+    round.take_turn("Juneau")
+    round.take_turn("Jupiter")
 
-
-
-  def test_that_a_turn_was_taken
-    skip
-    round.take_turn
-    #test for command
-    #test for query
-    assert_equal
+    assert_equal 50.0, round.percent_correct
   end
 
-  # test that incorrect cards in incorrect array
-  # test that correct cards are in correct array
+  def test_shows_correct_percentage_by_category
+    round = Round.new(@deck)
+    turn = Turn.new("Juneau", @deck.cards[0])
+    round.take_turn("Juneau")
+    round.take_turn("Jupiter")
+    round.take_turn("North north west")
 
+  assert_equal 50.0, round.percent_correct_by_category(:STEM)
+  assert_equal 100.0, round.percent_correct_by_category(:Geography)
+  end
 
 end
 
