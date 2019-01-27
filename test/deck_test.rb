@@ -12,7 +12,8 @@ class DeckTest < Minitest::Test
   end
 
   def test_that_it_exists
-    deck = Deck.new
+    cards = [@card_1, @card_2, @card_3]
+    deck = Deck.new(cards)
 
     assert_instance_of Deck, deck
   end
@@ -28,7 +29,7 @@ class DeckTest < Minitest::Test
     cards = [@card_1, @card_2, @card_3]
     deck = Deck.new(cards)
 
-    assert_equal 3, deck.count
+    assert_equal 3, deck.cards.count
   end
 
   def test_that_cards_can_be_seperated_by_category
