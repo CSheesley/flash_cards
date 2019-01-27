@@ -81,6 +81,18 @@ class RoundTest < Minitest::Test
     refute turn.correct?
   end
 
+  def test_that_shows_correct_answers_by_category
+    skip
+    round = Round.new(@deck)
+    turn = Turn.new("Juneau", @deck.cards[0])
+    round.take_turn("Juneau")
+require 'pry'; binding.pry
+    assert_equal 1, round.number_correct_by_category(:Geography)
+  end
+
+
+
+
   def test_that_a_turn_was_taken
     skip
     round.take_turn
