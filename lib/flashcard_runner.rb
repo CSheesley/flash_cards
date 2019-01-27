@@ -10,7 +10,7 @@ card_2 = Card.new("Which state became the 50th state of the USA in 1959?", "Hawa
 card_3 = Card.new("In geometry, what shape does the Pythagorean Theorum refer to?", "Triangle", :STEM)
 card_4 = Card.new("Who holds the all time record for stolen bases in Major League Baseball?", "Rickey Henderson", :Sports)
 card_5 = Card.new("In what state can you find Grand Teton National Park?", "Wyoming", :Geography)
-card_6 = Card.new("Which plane has the most moons?", "Jupiter", :STEM)
+card_6 = Card.new("Which planet has the most moons?", "Jupiter", :STEM)
 card_7 = Card.new("What is the capital of Spain?", "Madrid", :Geography)
 card_8 = Card.new("In what year did the Civil War begin?", "1861", :History)
 

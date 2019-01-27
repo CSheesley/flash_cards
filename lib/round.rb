@@ -45,9 +45,9 @@ class Round
     (number_correct_by_category(category_arg) / all_by_category.count.to_f) * 100
   end
 
-  def start #need to write a test?
+  def start
     puts "-" * 45
-    puts "Welcome! You are playing with #{deck.cards.count} cards."
+    puts "Welcome to Flash Cards! You are playing with #{deck.cards.count} cards."
     puts "-" * 45
   end
 end
