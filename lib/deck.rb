@@ -16,7 +16,6 @@ class Deck
         category_cards << flash_card
       end
     end
-    category_cards # 'got eached' initial error was due to scoping issue
+    category_cards
   end
-
 end
