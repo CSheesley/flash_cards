@@ -59,21 +59,27 @@ class RoundTest < Minitest::Test
     assert_equal "Juneau", round.take_turn("Juneau").guess
   end
 
+  def test_to_see_if_answer_was_incorrect
+    round = Round.new(@deck)
+
+    refute_equal "Juneau", round.take_turn("Nome").guess
+  end
+
   def test_that_next_card_in_deck_comes_up_after_take_turn
     round = Round.new(@deck)
     round.take_turn("Juneau") #Error msg - NameError: uninitialized constant Round::Turn
 
-    assert_equal @card_2, @cards[1]
+    assert_equal @card_2, round.current_card
   end
 
-  def test_that_the_guess_was_correct #is this test correct or just hard coded to pass?
+  def test_that_the_guess_was_correct #does not really belong - nothing asserted about the Round
     round = Round.new(@deck)
     turn = Turn.new("Juneau", @deck.cards[0])
 
     assert turn.correct?
   end
 
-  def test_that_the_guess_was_incorrect
+  def test_that_the_guess_was_incorrect #does not really belong - nothing asserted about the Round
     round = Round.new(@deck)
     turn = Turn.new("Nome", @deck.cards[0])
 
