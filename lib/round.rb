@@ -15,8 +15,6 @@ class Round
     current_turn = Turn.new(guess, @current_card)
     @turns << current_turn
 
-    p current_turn.feedback
-
     if current_turn.correct?
       @number_correct += 1
       @correct_cards << current_turn
@@ -26,7 +24,7 @@ class Round
     return current_turn
   end
 
-  def number_correct_by_category(category_arg)
+  def number_correct_by_category(category_arg) #DRY code - next time use 'helper method'
     correct_by_category = @correct_cards.find_all do |turn|
       turn.card.category == category_arg
     end
@@ -38,7 +36,7 @@ class Round
     percentage_decimal * 100
   end
 
-  def percent_correct_by_category(category_arg) #is naming confusing in this method?
+  def percent_correct_by_category(category_arg) #DRY code - next time use 'helper method'
     all_by_category = @turns.find_all do |turn|
       turn.card.category == category_arg
     end
