@@ -25,7 +25,8 @@ until round.turns.count == deck.cards.count
   puts round.current_card.question
   print "Answer: "
   user_answer = gets.chomp
-  round.take_turn(user_answer)
+  turn = round.take_turn(user_answer) #don't fully understand how this line is working
+  puts turn.feedback
   puts ""
 end
 
