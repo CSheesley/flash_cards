@@ -22,6 +22,12 @@ class TurnTest < Minitest::Test
     assert_equal "Juneau", turn.guess
   end
 
+  def test_that_it_has_a_card
+    turn = Turn.new("Juneau", @card)
+
+    assert_equal @card, turn.card
+  end
+
   def test_that_the_guess_is_correct
     turn = Turn.new("Juneau", @card)
 
